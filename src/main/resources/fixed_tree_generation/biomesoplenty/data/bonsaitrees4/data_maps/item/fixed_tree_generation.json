@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+	{
+	  "type": "neoforge:mod_loaded",
+	  "modid": "biomesoplenty"
+	}
+  ],
+  "replace": false,
+  "values": {
+	"biomesoplenty:redwood_sapling": {
+	  "yCutOff": 6
+	}
+  }
+}

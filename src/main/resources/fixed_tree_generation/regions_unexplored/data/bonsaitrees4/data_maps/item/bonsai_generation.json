@@ -1,0 +1,46 @@
+{
+	"neoforge:conditions": [
+		{
+			"type": "neoforge:mod_loaded",
+			"modid": "regions_unexplored"
+		}
+	],
+	"replace": false,
+	"values": {
+		"regions_unexplored:pink_bioshroom": {
+			"valid_soil_types": [
+				"bonsaitrees4:mycelium"
+			]
+		},
+		"regions_unexplored:blue_bioshroom": {
+			"valid_soil_types": [
+				"bonsaitrees4:mycelium"
+			]
+		},
+		"regions_unexplored:yellow_bioshroom": {
+			"valid_soil_types": [
+				"bonsaitrees4:mycelium"
+			]
+		},
+		"regions_unexplored:green_bioshroom": {
+			"valid_soil_types": [
+				"bonsaitrees4:mycelium"
+			]
+		},
+		"regions_unexplored:cactus_flower": {
+			"valid_soil_types": [
+				"bonsaitrees4:sand"
+			]
+		},
+		"regions_unexplored:palm_sapling": {
+			"valid_soil_types": [
+				"bonsaitrees4:sand"
+			]
+		},
+		"regions_unexplored:joshua_sapling": {
+			"valid_soil_types": [
+				"bonsaitrees4:sand"
+			]
+		}
+	}
+}

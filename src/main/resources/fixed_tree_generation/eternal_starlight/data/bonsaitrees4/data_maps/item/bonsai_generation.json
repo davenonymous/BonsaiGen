@@ -1,0 +1,16 @@
+{
+	"neoforge:conditions": [
+		{
+			"type": "neoforge:mod_loaded",
+			"modid": "eternal_starlight"
+		}
+	],
+	"replace": false,
+	"values": {
+		"eternal_starlight:glowing_mushroom": {
+			"valid_soil_types": [
+				"bonsaitrees4:mycelium"
+			]
+		}
+	}
+}
