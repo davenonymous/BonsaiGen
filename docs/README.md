@@ -60,7 +60,7 @@ project-root
 │                └───bonsaitrees4
 │                │   └───soiltype
 │                │       └   vanilla_tiers.json
-│                │   
+│                │
 │                └───data_maps
 │                │   └───block
 |                │   │   └   soil.json
@@ -77,7 +77,7 @@ project-root
 │                         └───cobblepot
 │                             │   cobblestone_cluster.json
 │                             │   andesite_cluster.json
-│                             └   diorite_cluster.json   
+│                             └   diorite_cluster.json
 └───resourcepacks
     └───cobblepot
          │   pack.mcmeta
@@ -152,11 +152,11 @@ You can find this information on the CurseForge page of the mod. [Where?](cursef
 ```gradle
 dependencies {
     ...
-    
+
     // Only used for the data and resource pack generation
     runtimeOnly "curse.maven:biomes-o-plenty-220318:${biomesoplenty_fileid}"
     runtimeOnly "curse.maven:regions-unexplored-659110:${regionsunexplored_fileid}"
-    
+
     // Add your mod here, e.g. for twilight forest:
     runtimeOnly "curse.maven:the-twilight-forest-227639:${twilightforest_fileid}"
     ...
@@ -460,5 +460,9 @@ A rather weird example would be to use ender eyes as soil:
 	}
 }
 ```
+
+All together you should now see something like this in JEI:
+![New Soil Category](soils.png)
+![New Recipes](jei_recipes.png)
 
 ## Tree Models
