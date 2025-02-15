@@ -31,6 +31,12 @@
     "minecraft:cherry_sapling": {
       "model": "minecraft:cherry"
     },
+	"minecraft:chorus_fruit": {
+	  "model": "minecraft:chorus_flower",
+	  "valid_soil_types": [
+	    "bonsaitrees4:end_stone"
+	  ]
+	},
     "minecraft:crimson_fungus": {
       "light_emission": 15,
       "model": "minecraft:crimson_fungus_planted",

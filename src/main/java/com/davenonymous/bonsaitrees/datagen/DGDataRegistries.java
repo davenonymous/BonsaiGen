@@ -24,6 +24,7 @@ public class DGDataRegistries {
 	public static final ResourceKey<SoilType> WATER = builtIn("water");
 	public static final ResourceKey<SoilType> LAVA = builtIn("lava");
 	public static final ResourceKey<SoilType> STONE = builtIn("stone");
+	public static final ResourceKey<SoilType> END_STONE = builtIn("end_stone");
 	public static final ResourceKey<SoilType> NETHER_STONE = builtIn("nether_stone");
 	public static final ResourceKey<SoilType> MYCELIUM = builtIn("mycelium");
 	public static final ResourceKey<SoilType> NYLIUM = builtIn("nylium");
@@ -37,6 +38,7 @@ public class DGDataRegistries {
 				register(bootstrap, WATER, new ItemStack(Items.WATER_BUCKET));
 				register(bootstrap, LAVA, new ItemStack(Items.LAVA_BUCKET));
 				register(bootstrap, STONE, new ItemStack(Items.STONE));
+				register(bootstrap, END_STONE, new ItemStack(Items.END_STONE));
 				register(bootstrap, NETHER_STONE, new ItemStack(Items.NETHERRACK));
 				register(bootstrap, MYCELIUM, new ItemStack(Items.MYCELIUM));
 				register(bootstrap, NYLIUM, new ItemStack(Items.CRIMSON_NYLIUM));
