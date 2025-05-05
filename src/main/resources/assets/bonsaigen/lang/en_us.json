@@ -1,0 +1,22 @@
+{
+	"bonsaigen.configuration.packgen": "Pack Generation",
+	"bonsaigen.configuration.packgen.tooltip": "Options related to the generation of resource and data packs for mod compatibility.",
+
+	"bonsaigen.configuration.packgen.remove_cache": "Remove cache artifacts",
+	"bonsaigen.configuration.packgen.remove_cache.tooltip": "Disabling this will very slightly improve pack generation time, but may cause issues if the cache is corrupted. The cache will also end up in the generated pack increasing its size.",
+
+	"bonsaigen.configuration.packgen.create_zip": "Create zip archives",
+	"bonsaigen.configuration.packgen.create_zip.tooltip": "When enabled two zip archives will be created for each mod. One is the resource pack and the other is the data pack.",
+
+	"bonsaigen.configuration.packgen.trim_trunks": "Trim large trunks",
+	"bonsaigen.configuration.packgen.trim_trunks.tooltip": "Make bonsai models smaller by trimming long trunks. This automatically removes slices from the tree model if the n slices above it are identical.",
+
+	"bonsaigen.configuration.packgen.trim_trunk_threshold": "Trim threshold",
+	"bonsaigen.configuration.packgen.trim_trunk_threshold.tooltip": "The number of slices that need to be identical to trigger trunk trimming.",
+
+	"bonsaigen.configuration.packgen.path": "Generation path",
+	"bonsaigen.configuration.packgen.pathpath.tooltip": "The path where the generated packs will be saved. This path is relative to the game directory.",
+
+	"bonsaigen.configuration.packgen.mod_blacklist": "Mod blacklist",
+	"bonsaigen.configuration.packgen.mod_blacklist.tooltip": "A list of mods that will be ignored during pack generation. This is useful if a mod is causing issues or if you want to exclude a mod from the generated packs."
+}

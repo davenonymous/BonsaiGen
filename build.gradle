@@ -175,11 +175,6 @@ dependencies {
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
-    compileOnly "vazkii.patchouli:Patchouli:${patchouli_version}:api"
-    runtimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}"
-
-    implementation "curse.maven:jade-324717:${jade_fileid}"
-
     // Only used for the data and resource pack generation
     runtimeOnly "curse.maven:biomes-o-plenty-220318:${biomesoplenty_fileid}"
     runtimeOnly "curse.maven:regions-unexplored-659110:${regionsunexplored_fileid}"
