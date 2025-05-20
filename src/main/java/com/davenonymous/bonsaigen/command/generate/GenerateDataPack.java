@@ -2,7 +2,7 @@ package com.davenonymous.bonsaigen.command.generate;
 
 import com.davenonymous.bonsaigen.command.arguments.ModOrAllArgument;
 import com.davenonymous.bonsaigen.datagen.DGDataMaps;
-import com.davenonymous.bonsaigen.datagen.DGDataRegistries;
+import com.davenonymous.bonsaigen.setup.DefaultSoilTypes;
 import com.davenonymous.bonsaigen.datagen.DGSaplingLootBuilder;
 import com.davenonymous.bonsaigen.datagen.DGTreeModelProvider;
 import com.davenonymous.bonsaigen.lib.FileCopyGenerator;
@@ -160,9 +160,9 @@ public class GenerateDataPack implements Command<CommandSourceStack> {
 			var lootProvider = new LootTableProvider(dataOutput, Collections.emptySet(), List.of(lootBuilder), registryFuture);
 			var dataMapProvider = new DGDataMaps(dataOutput, registryFuture, modId, treeModelProvider);
 			if(modId.equals("minecraft")) {
-				dataMapProvider.addBonsai(Items.BRAIN_CORAL, BonsaiInfo.of(DGDataRegistries.WATER.location()));
-				dataMapProvider.addBonsai(Items.BUBBLE_CORAL, BonsaiInfo.of(DGDataRegistries.WATER.location()));
-				dataMapProvider.addBonsai(Items.HORN_CORAL, BonsaiInfo.of(DGDataRegistries.WATER.location()));
+				dataMapProvider.addBonsai(Items.BRAIN_CORAL, BonsaiInfo.of(DefaultSoilTypes.WATER.location()));
+				dataMapProvider.addBonsai(Items.BUBBLE_CORAL, BonsaiInfo.of(DefaultSoilTypes.WATER.location()));
+				dataMapProvider.addBonsai(Items.HORN_CORAL, BonsaiInfo.of(DefaultSoilTypes.WATER.location()));
 				dataMapProvider.addBonsai(Items.CRIMSON_FUNGUS, BonsaiInfo.plain(null));
 				dataMapProvider.addBonsai(Items.WARPED_FUNGUS, BonsaiInfo.plain(null));
 			}

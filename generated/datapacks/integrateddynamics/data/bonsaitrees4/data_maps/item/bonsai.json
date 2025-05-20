@@ -1,0 +1,7 @@
+{
+  "values": {
+    "integrateddynamics:menril_sapling": {
+      "model": "integrateddynamics:tree_menril"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "loader": "bonsaitrees4:multiblockmodel",
+  "version": 4,
+  "ref": {
+    "a": {"Properties":{"waterlogged":"false","persistent":"false","distance":"1"},"Name":"twilightforest:mining_leaves"},
+    "b": {"Properties":{"waterlogged":"false","persistent":"false","distance":"7"},"Name":"twilightforest:mining_leaves"},
+    "c": {"Properties":{"axis":"y"},"Name":"twilightforest:mining_log"},
+    "d": {"Properties":{"axis":"y"},"Name":"twilightforest:mining_wood"},
+    "e": {"Properties":{"axis":"y","active":"false"},"Name":"twilightforest:mining_log_core"}
+  },
+  "shape": [
+    [
+      "    aaaaa    ",
+      "   aaaaaaa   ",
+      "  aaaaaaaaa  ",
+      " aaa     aaa ",
+      "aaa       aaa",
+      "             ",
+      "             ",
+      "             ",
+      "             "
+    ],
+    [
+      "   aaaaaaa   ",
+      "  aaddcddaa  ",
+      " aadaacaadaa ",
+      "aadaa c aadaa",
+      "adaa  c  aada",
+      "aab   c   bab",
+      "      c      ",
+      "      e      ",
+      "      c      "
+    ],
+    [
+      "    aaaaa    ",
+      "   abaaaba   ",
+      "  aaaaabaaa  ",
+      " aab     aab ",
+      "aab       bab",
+      "             ",
+      "             ",
+      "             ",
+      "             "
+    ]
+  ]
+}

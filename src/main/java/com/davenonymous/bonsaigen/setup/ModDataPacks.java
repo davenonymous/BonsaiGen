@@ -34,10 +34,10 @@ public class ModDataPacks {
 				String modId = modInfo.getModId();
 
 				try {
-					Path resourcePath = bonsaiModFile.findResource("fixed_tree_generation", modId);
+					Path resourcePath = bonsaiModFile.findResource("generation_config", modId);
 					PackLocationInfo packLocationInfo = new PackLocationInfo(
-						modId + "_model_gen",
-						Component.literal("Model generation info for: " + modInfo.getDisplayName()),
+						modId + "_generation_config",
+						Component.literal("BonsaiGen generation info for: " + modInfo.getDisplayName()),
 						PackSource.BUILT_IN,
 						Optional.empty()
 					);
@@ -51,6 +51,7 @@ public class ModDataPacks {
 					Pack pack = Pack.readMetaAndCreate(packLocationInfo, pathResourcesSupplier, event.getPackType(), DATAPACK_SELECTION_CONFIG).hidden();
 					event.addRepositorySource(consumer -> {
 						consumer.accept(pack);
+						BonsaiGen.LOGGER.info("Added BonsaiGen datapack for mod: " + modId);
 					});
 				} catch (IOException e) {
 					throw new RuntimeException(e);

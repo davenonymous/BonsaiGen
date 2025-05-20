@@ -6,8 +6,6 @@
 	"refmap": "bonsaigen.refmap.json",
 	"mixins": [
 		"MixinAbstractHugeMushroomFeature",
-		"MixinArsElementalDatagenSkip",
-		"MixinArsNouveauDatagenSkip",
 		"MixinBlockCanSurvive"
 	],
 	"client": [

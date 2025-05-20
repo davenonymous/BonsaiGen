@@ -4,8 +4,6 @@ import com.davenonymous.bonsaigen.BonsaiGen;
 import com.davenonymous.bonsaigen.setup.data.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.datamaps.DataMapType;
@@ -24,7 +22,7 @@ public class ModDataMaps {
 
 	public static final DataMapType<Item, ModelGenerationInfo> FIXED_TREE_GENERATION_SEEDS = DataMapType
 		.builder(
-			BonsaiGen.resource("fixed_tree_generation"),
+			BonsaiGen.resource("generation_config"),
 			Registries.ITEM,
 			ModelGenerationInfo.CODEC.codec()
 		)
