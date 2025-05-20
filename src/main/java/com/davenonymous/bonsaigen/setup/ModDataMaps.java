@@ -22,7 +22,7 @@ public class ModDataMaps {
 
 	public static final DataMapType<Item, ModelGenerationInfo> FIXED_TREE_GENERATION_SEEDS = DataMapType
 		.builder(
-			BonsaiGen.resource("generation_config"),
+			BonsaiGen.resource("fixed_tree_generation"),
 			Registries.ITEM,
 			ModelGenerationInfo.CODEC.codec()
 		)

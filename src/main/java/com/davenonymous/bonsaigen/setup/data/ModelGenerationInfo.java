@@ -66,6 +66,10 @@ public record ModelGenerationInfo(
 		return new ModelGenerationInfo(fixedSeed, yOffset, preferredFeature, preferredMedium, Optional.of(soil));
 	}
 
+	public boolean isEmpty() {
+		return fixedSeed.isEmpty() && yOffset.isEmpty() && preferredFeature.isEmpty() && preferredMedium.isEmpty() && preferredSoil.isEmpty();
+	}
+
 	public static ModelGenerationInfo EMPTY() {
 		return new ModelGenerationInfo(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
 	}

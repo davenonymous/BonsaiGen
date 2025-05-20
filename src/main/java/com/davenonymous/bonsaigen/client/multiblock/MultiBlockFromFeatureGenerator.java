@@ -69,6 +69,8 @@ public class MultiBlockFromFeatureGenerator {
 		result.pushIndent();
 		resetArena(feature, options, Block.UPDATE_NONE);
 
+		result.info("Custom options: " + (options.isEmpty() ? "None" : "Yes"));
+
 		long seed = options.fixedSeed().orElse((long) featureId.hashCode());
 		result.info("Using seed: " + seed);
 

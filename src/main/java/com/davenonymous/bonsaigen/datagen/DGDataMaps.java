@@ -52,7 +52,7 @@ public class DGDataMaps extends DataMapProvider {
 	}
 
 	@Override
-	protected void gather() {
+	protected void gather(HolderLookup.Provider foo) {
 		lookupProvider.thenAccept(provider -> {
 			var builder = builder(ModDataMaps.BONSAI);
 			treeModelProvider.itemToModel.forEach((item, model) -> {
