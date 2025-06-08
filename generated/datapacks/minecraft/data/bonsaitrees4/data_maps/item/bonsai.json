@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "minecraft"
+    }
+  ],
   "values": {
     "minecraft:acacia_sapling": {
       "model": "minecraft:acacia"
@@ -18,7 +24,7 @@
     "minecraft:brown_mushroom": {
       "model": "minecraft:huge_brown_mushroom",
       "valid_soil_types": [
-        "bonsaigen:mycelium"
+        "bonsaitrees4:mycelium"
       ]
     },
     "minecraft:bubble_coral": {
@@ -35,7 +41,7 @@
       "light_emission": 15,
       "model": "minecraft:crimson_fungus_planted",
       "valid_soil_types": [
-        "bonsaigen:nylium"
+        "bonsaitrees4:nylium"
       ]
     },
     "minecraft:dark_oak_sapling": {
@@ -63,7 +69,7 @@
     "minecraft:red_mushroom": {
       "model": "minecraft:huge_red_mushroom",
       "valid_soil_types": [
-        "bonsaigen:mycelium"
+        "bonsaitrees4:mycelium"
       ]
     },
     "minecraft:spruce_sapling": {
@@ -73,7 +79,7 @@
       "light_emission": 15,
       "model": "minecraft:warped_fungus_planted",
       "valid_soil_types": [
-        "bonsaigen:nylium"
+        "bonsaitrees4:nylium"
       ]
     }
   }
