@@ -1,8 +1,9 @@
 package com.davenonymous.bonsaigen.command.generate;
 
-import com.davenonymous.bonsaigen.multiblock.MultiBlockGeometryBase;
+import com.davenonymous.bonsaigen.multiblock.FloodFill;
 import com.davenonymous.bonsaigen.networking.GeometryToClipboard;
 import com.davenonymous.bonsaigen.setup.config.PackGenConfig;
+import com.davenonymous.bonsaitrees.multiblock.MultiBlockGeometryBase;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.ArgumentBuilder;
@@ -31,7 +32,7 @@ public class GenerateModel implements Command<CommandSourceStack> {
 	public int run(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
 		ServerLevel world = context.getSource().getLevel();
 		BlockPos pos = BlockPosArgument.getLoadedBlockPos(context, "pos");
-		MultiBlockGeometryBase geometry = MultiBlockGeometryBase.floodfill(world, pos);
+		MultiBlockGeometryBase geometry = FloodFill.floodfill(world, pos);
 
 		String result = String.format(
 			"Flood fill complete. Size=%dx%dx%d, Blocks=%d, States=%d",

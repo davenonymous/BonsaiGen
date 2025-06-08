@@ -1,17 +1,22 @@
 package com.davenonymous.bonsaigen.command.generate;
 
+import com.davenonymous.bonsaigen.BonsaiGen;
 import com.davenonymous.bonsaigen.command.arguments.ModOrAllArgument;
 import com.davenonymous.bonsaigen.datagen.DGDataMaps;
-import com.davenonymous.bonsaigen.setup.DefaultSoilTypes;
+import com.davenonymous.bonsaigen.datagen.DGDataRegistries;
 import com.davenonymous.bonsaigen.datagen.DGSaplingLootBuilder;
 import com.davenonymous.bonsaigen.datagen.DGTreeModelProvider;
 import com.davenonymous.bonsaigen.lib.FileCopyGenerator;
 import com.davenonymous.bonsaigen.lib.ResourcePackMetadataGenerator;
 import com.davenonymous.bonsaigen.lib.util.SpawnHelper;
 import com.davenonymous.bonsaigen.lib.util.ZippingFileVisitor;
+
+import com.davenonymous.bonsaigen.setup.cache.SoilTypeGenerationCache;
 import com.davenonymous.bonsaigen.setup.config.PackGenConfig;
-import com.davenonymous.bonsaigen.setup.data.BonsaiInfo;
+
 import com.davenonymous.bonsaigen.setup.data.ModelGenerationInfo;
+import com.davenonymous.bonsaitrees.setup.data.BonsaiInfo;
+import com.davenonymous.bonsaitrees.setup.data.DefaultSoilTypes;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.ArgumentBuilder;
@@ -22,6 +27,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
@@ -33,16 +39,14 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 import java.util.zip.ZipOutputStream;
@@ -177,6 +181,17 @@ public class GenerateDataPack implements Command<CommandSourceStack> {
 			dataGen.addProvider(true, dataMapProvider);
 			dataGen.addProvider(true, dataMetaProvider);
 			dataGen.addProvider(true, dataPngProvider);
+
+			if(SoilTypeGenerationCache.SOIL_TYPE_GENERATION_CACHE.containsKey(modId)) {
+				BonsaiGen.LOGGER.info("Generating soil types for mod: " + modId);
+				dataGen.addProvider(
+					true, (DataProvider.Factory<DatapackBuiltinEntriesProvider>) soilOutput -> new DatapackBuiltinEntriesProvider(
+						soilOutput,
+						registryFuture,
+						DGDataRegistries.create(modId), Set.of(BonsaiGen.BASE_MODID, modId)
+					)
+				);
+			}
 
 
 			var resourceMetaProvider = ResourcePackMetadataGenerator.forResourcePack(resourceOutput, Component.literal("Bonsai models for: " + modId));

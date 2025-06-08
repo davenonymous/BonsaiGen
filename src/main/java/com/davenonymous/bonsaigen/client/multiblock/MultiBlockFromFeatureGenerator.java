@@ -1,9 +1,9 @@
 package com.davenonymous.bonsaigen.client.multiblock;
 
 import com.davenonymous.bonsaigen.multiblock.FloodFill;
-import com.davenonymous.bonsaigen.multiblock.MultiBlockGeometryBase;
 import com.davenonymous.bonsaigen.setup.config.PackGenConfig;
 import com.davenonymous.bonsaigen.setup.data.ModelGenerationInfo;
+import com.davenonymous.bonsaitrees.multiblock.MultiBlockGeometryBase;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;

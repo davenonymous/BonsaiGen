@@ -54,7 +54,7 @@ public class DGSaplingLootBuilder implements LootTableSubProvider {
 			pool.when(LootItemRandomChanceCondition.randomChance(chance));
 		}
 
-		Arrays.stream(item).map(LootItem::lootTableItem).forEach(pool::add);
+		Arrays.stream(item).sorted(Comparator.comparing(itemLike -> itemLike.asItem().builtInRegistryHolder().getKey().location().toString(), Comparator.naturalOrder())).map(LootItem::lootTableItem).forEach(pool::add);
 		return pool;
 	}
 

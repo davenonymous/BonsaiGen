@@ -1,6 +1,7 @@
 package com.davenonymous.bonsaigen.multiblock;
 
 
+import com.davenonymous.bonsaitrees.multiblock.MultiBlockGeometryBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.LevelReader;
@@ -40,6 +41,12 @@ public class FloodFill {
 	public FloodFill(LevelReader world, BlockPos startingPos, List allowedBlocks) {
 		this(world, startingPos);
 		this.allowedBlocks = allowedBlocks;
+	}
+
+	public static MultiBlockGeometryBase floodfill(LevelReader world, BlockPos pos) {
+		FloodFill floodFill = new FloodFill(world, pos);
+		Map<BlockPos, MultiBlockGeometryBase.Voxel> blocks = MultiBlockGeometryBase.castVoxelMap(floodFill.getConnectedBlocks());
+		return new MultiBlockGeometryBase(1, 4, blocks, 0);
 	}
 
 	public static Map<BlockPos, BlockState> normalizeBlockPosMap(Map<BlockPos, BlockState> input) {

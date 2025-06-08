@@ -1,6 +1,5 @@
 package com.davenonymous.bonsaigen;
 
-import com.davenonymous.bonsaigen.setup.Registration;
 import com.davenonymous.bonsaigen.setup.config.Config;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -19,7 +18,6 @@ public class BonsaiGen {
 
 	public BonsaiGen(IEventBus modEventBus, ModContainer modContainer) {
 		CONTAINER = modContainer;
-		Registration.register(modEventBus);
 
 		modContainer.registerConfig(ModConfig.Type.COMMON, Config.COMMON_SPEC);
 	}

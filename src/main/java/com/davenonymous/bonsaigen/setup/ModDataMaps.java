@@ -11,14 +11,6 @@ import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 
 @EventBusSubscriber(modid = BonsaiGen.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ModDataMaps {
-	public static final DataMapType<Item, BonsaiInfo> BONSAI = DataMapType
-		.builder(
-			BonsaiGen.bonsaiResource("bonsai"),
-			Registries.ITEM,
-			BonsaiInfo.CODEC
-		)
-		.synced(BonsaiInfo.CODEC, false)
-		.build();
 
 	public static final DataMapType<Item, ModelGenerationInfo> FIXED_TREE_GENERATION_SEEDS = DataMapType
 		.builder(
@@ -38,12 +30,21 @@ public class ModDataMaps {
 		.synced(BonsaiGenerationInfo.CODEC, false)
 		.build();
 
+	public static final DataMapType<Item, SoilTypeGenerationInfo> SOIL_TYPES_GENERATION = DataMapType
+		.builder(
+			BonsaiGen.resource("soil_types"),
+			Registries.ITEM,
+			SoilTypeGenerationInfo.CODEC
+		)
+		.synced(SoilTypeGenerationInfo.CODEC, false)
+		.build();
+
 
 	@SubscribeEvent
 	private static void registerDataMapTypes(RegisterDataMapTypesEvent event) {
-		event.register(BONSAI);
 		event.register(FIXED_TREE_GENERATION_SEEDS);
 		event.register(BONSAI_GENERATION);
+		event.register(SOIL_TYPES_GENERATION);
 	}
 
 }

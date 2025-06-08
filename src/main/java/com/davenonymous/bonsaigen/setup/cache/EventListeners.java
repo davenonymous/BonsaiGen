@@ -12,5 +12,6 @@ public class EventListeners {
 	public static void dataMapsUpdated(DataMapsUpdatedEvent event) {
 		FixedTreeGenerationCache.dataMapsUpdated(event);
 		BonsaiGenerationCache.dataMapsUpdated(event);
+		SoilTypeGenerationCache.dataMapsUpdated(event);
 	}
 }
