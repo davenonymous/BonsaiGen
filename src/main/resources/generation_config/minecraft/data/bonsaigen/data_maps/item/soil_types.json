@@ -1,0 +1,64 @@
+{
+	"values": {
+		"minecraft:grass_block": {
+			"id": "bonsaitrees4:dirt",
+			"tags": [
+				"c:dirts",
+				"minecraft:dirt"
+			]
+		},
+		"minecraft:mycelium": {
+			"id": "bonsaitrees4:mycelium",
+			"tags": [
+				"minecraft:mushroom_grow_block"
+			]
+		},
+		"minecraft:sand": {
+			"id": "bonsaitrees4:sand",
+			"tags": [
+				"minecraft:sand"
+			]
+		},
+		"minecraft:stone": {
+			"id": "bonsaitrees4:stone",
+			"tags": [
+				"minecraft:base_stone_overworld"
+			]
+		},
+		"minecraft:end_stone": {
+			"id": "bonsaitrees4:end_stone",
+			"tags": [
+				"c:end_stones"
+			],
+			"blocks": [
+				"minecraft:end_stone"
+			]
+		},
+		"minecraft:netherrack": {
+			"id": "bonsaitrees4:nether_stone",
+			"tags": [
+				"minecraft:base_stone_nether"
+			]
+		},
+		"minecraft:warped_nylium": {
+			"id": "bonsaitrees4:nylium",
+			"tags": [
+				"minecraft:nylium"
+			]
+		},
+		"minecraft:water_bucket": {
+			"id": "bonsaitrees4:water",
+			"isFluid": true,
+			"fluidTags": [
+				"minecraft:water"
+			]
+		},
+		"minecraft:lava_bucket": {
+			"id": "bonsaitrees4:lava",
+			"isFluid": true,
+			"fluidTags": [
+				"minecraft:lava"
+			]
+		}
+	}
+}

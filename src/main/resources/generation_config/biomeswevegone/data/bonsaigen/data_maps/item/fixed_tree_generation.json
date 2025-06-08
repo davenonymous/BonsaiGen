@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+	{
+	  "type": "neoforge:mod_loaded",
+	  "modid": "biomeswevegone"
+	}
+  ],
+  "replace": false,
+  "values": {
+	"biomeswevegone:cika_sapling": {
+	  "yCutOff": 12
+	}
+  }
+}

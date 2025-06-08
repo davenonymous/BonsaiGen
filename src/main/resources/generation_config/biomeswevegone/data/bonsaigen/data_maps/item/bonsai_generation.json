@@ -1,0 +1,16 @@
+{
+	"neoforge:conditions": [
+		{
+			"type": "neoforge:mod_loaded",
+			"modid": "biomeswevegone"
+		}
+	],
+	"replace": false,
+	"values": {
+		"biomeswevegone:green_mushroom": {
+			"valid_soil_types": [
+				"bonsaitrees4:mycelium"
+			]
+		}
+	}
+}
