@@ -1,14 +1,29 @@
 {
-  "neoforge:conditions": [
-	{
-	  "type": "neoforge:mod_loaded",
-	  "modid": "biomeswevegone"
+	"neoforge:conditions": [
+		{
+			"type": "neoforge:mod_loaded",
+			"modid": "biomeswevegone"
+		}
+	],
+	"replace": false,
+	"values": {
+		"biomeswevegone:cika_sapling": {
+			"yCutOff": 12
+		},
+		"biomeswevegone:palm_sapling": {
+			"preferredSoil": {
+				"Name": "minecraft:sand"
+			}
+		},
+		"biomeswevegone:palo_verde_sapling": {
+			"preferredSoil": {
+				"Name": "minecraft:sand"
+			}
+		},
+		"biomeswevegone:yucca_sapling": {
+			"preferredSoil": {
+				"Name": "minecraft:sand"
+			}
+		}
 	}
-  ],
-  "replace": false,
-  "values": {
-	"biomeswevegone:cika_sapling": {
-	  "yCutOff": 12
-	}
-  }
 }
