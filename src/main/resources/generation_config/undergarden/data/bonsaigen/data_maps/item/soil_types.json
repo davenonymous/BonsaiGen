@@ -13,7 +13,8 @@
 				"undergarden:deepsoil",
 				"undergarden:deepsoil_farmland",
 				"undergarden:coarse_deepsoil"
-			]
+			],
+			"translationKey": "block.undergarden.deepsoil"
 		}
 	}
 }

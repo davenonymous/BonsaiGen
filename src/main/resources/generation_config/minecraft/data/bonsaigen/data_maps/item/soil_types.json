@@ -5,26 +5,30 @@
 			"tags": [
 				"c:dirts",
 				"minecraft:dirt"
-			]
+			],
+			"translationKey": "block.minecraft.dirt"
 		},
 		"minecraft:mycelium": {
 			"id": "bonsaitrees4:mycelium",
 			"tags": [
 				"minecraft:mushroom_grow_block",
 				"minecraft:nylium"
-			]
+			],
+			"translationKey": "block.minecraft.mycelium"
 		},
 		"minecraft:sand": {
 			"id": "bonsaitrees4:sand",
 			"tags": [
 				"minecraft:sand"
-			]
+			],
+			"translationKey": "block.minecraft.sand"
 		},
 		"minecraft:stone": {
 			"id": "bonsaitrees4:stone",
 			"tags": [
 				"minecraft:base_stone_overworld"
-			]
+			],
+			"translationKey": "block.minecraft.stone"
 		},
 		"minecraft:end_stone": {
 			"id": "bonsaitrees4:end_stone",
@@ -33,13 +37,15 @@
 			],
 			"blocks": [
 				"minecraft:end_stone"
-			]
+			],
+			"translationKey": "block.minecraft.end_stone"
 		},
 		"minecraft:netherrack": {
 			"id": "bonsaitrees4:nether_stone",
 			"tags": [
 				"minecraft:base_stone_nether"
-			]
+			],
+			"translationKey": "block.minecraft.netherrack"
 		},
 		"minecraft:warped_nylium": {
 			"id": "bonsaitrees4:nylium",
@@ -52,14 +58,16 @@
 			"isFluid": true,
 			"fluidTags": [
 				"minecraft:water"
-			]
+			],
+			"translationKey": "block.minecraft.water"
 		},
 		"minecraft:lava_bucket": {
 			"id": "bonsaitrees4:lava",
 			"isFluid": true,
 			"fluidTags": [
 				"minecraft:lava"
-			]
+			],
+			"translationKey": "block.minecraft.lava"
 		}
 	}
 }

@@ -11,7 +11,8 @@
 			"id": "deeperdarker:echo_soil",
 			"blocks": [
 				"deeperdarker:echo_soil"
-			]
+			],
+			"translationKey": "block.deeperdarker.echo_soil"
 		}
 	}
 }
