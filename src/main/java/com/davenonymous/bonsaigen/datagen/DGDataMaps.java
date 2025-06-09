@@ -138,17 +138,21 @@ public class DGDataMaps extends DataMapProvider {
 
 					if(soilTypeInfo.isFluid()) {
 						for(TagKey<Fluid> tag : fluidTagSoils.keySet()) {
-							fluidBuilder.add(tag, SoilInfo.of(fluidTagSoils.get(tag)), false);
+							List<ResourceLocation> fluidIds = fluidTagSoils.get(tag).stream().sorted(Comparator.comparing(ResourceLocation::toString)).toList();
+							fluidBuilder.add(tag, SoilInfo.of(fluidIds), false);
 						}
 						for(ResourceLocation fluid : fluidSoils.keySet()) {
-							fluidBuilder.add(fluid, SoilInfo.of(fluidSoils.get(fluid)), false);
+							List<ResourceLocation> fluidIds = fluidSoils.get(fluid).stream().sorted(Comparator.comparing(ResourceLocation::toString)).toList();
+							fluidBuilder.add(fluid, SoilInfo.of(fluidIds), false);
 						}
 					} else {
 						for(TagKey<Block> tag : blockTagSoils.keySet()) {
-							soilBuilder.add(tag, SoilInfo.of(blockTagSoils.get(tag)), false);
+							List<ResourceLocation> blockIds = blockTagSoils.get(tag).stream().sorted(Comparator.comparing(ResourceLocation::toString)).toList();
+							soilBuilder.add(tag, SoilInfo.of(blockIds), false);
 						}
 						for(ResourceLocation block : blockSoils.keySet()) {
-							soilBuilder.add(block, SoilInfo.of(blockSoils.get(block)), false);
+							List<ResourceLocation> blockIds = blockSoils.get(block).stream().sorted(Comparator.comparing(ResourceLocation::toString)).toList();
+							soilBuilder.add(block, SoilInfo.of(blockIds), false);
 						}
 					}
 				}
