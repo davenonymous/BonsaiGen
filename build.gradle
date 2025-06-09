@@ -117,6 +117,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 tasks.register("removeGameTestServerPacks", Delete) {
     delete "${gen_path}/datapacks"
     delete "${gen_path}/resourcepacks"
+    delete "./run/config/bonsaigen-common.toml"
 }
 
 runGameTestServer.dependsOn removeGameTestServerPacks
