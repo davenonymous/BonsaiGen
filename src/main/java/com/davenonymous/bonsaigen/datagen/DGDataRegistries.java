@@ -25,7 +25,20 @@ public class DGDataRegistries {
 						SoilTypeGenerationInfo info = entry.getValue();
 
 						ResourceKey<SoilType> key = ResourceKey.create(SOILTYPE_REGISTRY_KEY, info.id());
-						BonsaiGen.LOGGER.info("Soil metadata for item {}: {}, {}", key, info.id(), info.blocks());
+						BonsaiGen.LOGGER.info("Soil {} metadata:", info.id());
+						BonsaiGen.LOGGER.info("  Default Item: {}", item);
+						if(info.tags().isPresent()) {
+							BonsaiGen.LOGGER.info("  Tags: {}", info.tags().get());
+						}
+						if(info.blocks().isPresent()) {
+							BonsaiGen.LOGGER.info("  Blocks: {}", info.blocks().get());
+						}
+						if(info.fluids().isPresent()) {
+							BonsaiGen.LOGGER.info("  Fluids: {}", info.fluids().get());
+						}
+						if(info.fluidTags().isPresent()) {
+							BonsaiGen.LOGGER.info("  Fluid Tags: {}", info.fluidTags().get());
+						}
 
 						ItemStack defaultItem = new ItemStack(item);
 						String translationKey = BonsaiGen.BASE_MODID + ".tooltip.soil." + key.location().getNamespace() + "." + key.location().getPath();
