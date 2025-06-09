@@ -20,6 +20,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+          cache: 'gradle'
           server-id:
           settings-path: ${{ github.workspace }}
 
@@ -30,6 +31,7 @@ jobs:
         uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: "5.40"
+          enable-modules-cache: false
 
       - name: Install Perl dependencies
         run: cpanm -n Mojolicious
