@@ -24,6 +24,39 @@
 			"preferredSoil": {
 				"Name": "minecraft:sand"
 			}
+		},
+		"biomeswevegone:baobab_sapling": {
+			"yCutOff": 12
+		},
+		"biomeswevegone:ironwood_sapling": {
+			"yCutOff": 6
+		},
+		"biomeswevegone:jacaranda_sapling": {
+			"yCutOff": 8
+		},
+		"biomeswevegone:mahogany_sapling": {
+			"yCutOff": 8
+		},
+		"biomeswevegone:redwood_sapling": {
+			"yCutOff": 14
+		},
+		"biomeswevegone:white_mangrove_sapling": {
+			"yCutOff": 8
+		},
+		"biomeswevegone:indigo_jacaranda_sapling": {
+			"yCutOff": 9
+		},
+		"biomeswevegone:orange_spruce_sapling": {
+			"yCutOff": 9
+		},
+		"biomeswevegone:orchard_sapling": {
+			"yCutOff": 5
+		},
+		"biomeswevegone:red_maple_sapling": {
+			"yCutOff": 5
+		},
+		"biomeswevegone:silver_maple_sapling": {
+			"yCutOff": 5
 		}
 	}
 }
