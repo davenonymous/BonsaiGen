@@ -42,11 +42,11 @@ public class DGDataRegistries {
 
 						ItemStack defaultItem = new ItemStack(item);
 						String translationKey = BonsaiGen.BASE_MODID + ".tooltip.soil." + key.location().getNamespace() + "." + key.location().getPath();
+						if(info.translationKey().isPresent()) {
+							translationKey = info.translationKey().get();
+						}
 
 						SoilType soilType = new SoilType(key.location(), defaultItem, translationKey);
-						// WithConditions<SoilType> soilTypeWithConditions =
-						//	WithConditions.builder(soilType).addCondition(new ModLoadedCondition(key.location().getNamespace())).build();
-
 						bootstrap.register(key, soilType);
 					}
 				}

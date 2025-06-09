@@ -14,7 +14,8 @@ import java.util.Optional;
 public record SoilTypeGenerationInfo(
 	ResourceLocation id, boolean isFluid,
 	Optional<List<ResourceLocation>> blocks, Optional<List<TagKey<Block>>> tags,
-	Optional<List<ResourceLocation>> fluids, Optional<List<TagKey<Fluid>>> fluidTags
+	Optional<List<ResourceLocation>> fluids, Optional<List<TagKey<Fluid>>> fluidTags,
+	Optional<String> translationKey
 ) {
 	public static final Codec<SoilTypeGenerationInfo> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 		ResourceLocation.CODEC.fieldOf("id").forGetter(SoilTypeGenerationInfo::id),
@@ -22,7 +23,8 @@ public record SoilTypeGenerationInfo(
 		ResourceLocation.CODEC.listOf().optionalFieldOf("blocks").forGetter(SoilTypeGenerationInfo::blocks),
 		TagKey.codec(BuiltInRegistries.BLOCK.key()).listOf().optionalFieldOf("tags").forGetter(SoilTypeGenerationInfo::tags),
 		ResourceLocation.CODEC.listOf().optionalFieldOf("fluids").forGetter(SoilTypeGenerationInfo::fluids),
-		TagKey.codec(BuiltInRegistries.FLUID.key()).listOf().optionalFieldOf("fluidTags").forGetter(SoilTypeGenerationInfo::fluidTags)
+		TagKey.codec(BuiltInRegistries.FLUID.key()).listOf().optionalFieldOf("fluidTags").forGetter(SoilTypeGenerationInfo::fluidTags),
+		Codec.STRING.optionalFieldOf("translationKey").forGetter(SoilTypeGenerationInfo::translationKey)
 
 	).apply(instance, SoilTypeGenerationInfo::new));
 }
