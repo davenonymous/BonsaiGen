@@ -6,7 +6,7 @@
     "b": {"Properties":{"axis":"y"},"Name":"regions_unexplored:blackwood_log"},
     "c": {"Properties":{"axis":"z"},"Name":"regions_unexplored:blackwood_log"},
     "d": {"Properties":{"axis":"x"},"Name":"regions_unexplored:blackwood_log"},
-    "e": {"Properties":{"facing":"south"},"Name":"regions_unexplored:blackwood_branch"}
+    "e": {"Properties":{"facing":"west"},"Name":"regions_unexplored:blackwood_branch"}
   },
   "shape": [
     [
@@ -24,6 +24,7 @@
       "           ",
       "           ",
       "           ",
+      "           ",
       "    aaa    ",
       "           ",
       "           ",
@@ -32,6 +33,7 @@
       "           "
     ],
     [
+      "           ",
       "           ",
       "           ",
       "           ",
@@ -54,6 +56,7 @@
       "           "
     ],
     [
+      "           ",
       "           ",
       "           ",
       "           ",
@@ -76,6 +79,7 @@
       "           "
     ],
     [
+      "           ",
       "           ",
       "           ",
       "           ",
@@ -102,6 +106,7 @@
       "           ",
       "     a     ",
       "           ",
+      "     a     ",
       "     a     ",
       "   aadaa   ",
       "     a     ",
@@ -122,15 +127,16 @@
     [
       "     a     ",
       "     a     ",
-      "    aba    ",
+      "    aaa    ",
       "     b     ",
+      "    aba    ",
       "    aba    ",
       "   acbca   ",
       "    aba    ",
       "   aabaa   ",
       "  aacbcaa  ",
       "   aabaa   ",
-      "  aaabeaa  ",
+      "  aaabaaa  ",
       " aaccbccaa ",
       "  a aba a  ",
       " aa aba aa ",
@@ -147,12 +153,13 @@
       "     a     ",
       "           ",
       "     a     ",
+      "     a     ",
       "   aadaa   ",
       "     a     ",
       "   aaaaa   ",
       "  aaadaaa  ",
       "    aaa    ",
-      "  aaaaaaa  ",
+      "  aaaeaaa  ",
       " aaaadaaaa ",
       "    aaa    ",
       " aa aaa aa ",
@@ -169,6 +176,7 @@
       "           ",
       "           ",
       "           ",
+      "           ",
       "    aaa    ",
       "           ",
       "    aaa    ",
@@ -194,6 +202,7 @@
       "           ",
       "           ",
       "           ",
+      "           ",
       "    aaa    ",
       "           ",
       "    aaa    ",
@@ -219,6 +228,7 @@
       "           ",
       "           ",
       "           ",
+      "           ",
       "    aaa    ",
       "           ",
       "    aaa    ",
@@ -230,6 +240,7 @@
       "           "
     ],
     [
+      "           ",
       "           ",
       "           ",
       "           ",

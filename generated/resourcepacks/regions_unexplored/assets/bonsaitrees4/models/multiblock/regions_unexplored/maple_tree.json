@@ -14,15 +14,15 @@
       "     ",
       "     ",
       "     ",
-      "     ",
+      "  a  ",
       " aaa ",
-      " aaa ",
+      "aaaaa",
       "     ",
       "     "
     ],
     [
       "     ",
-      "  aa ",
+      "  a  ",
       " aa  ",
       " aaa ",
       "aaaaa",
@@ -34,7 +34,7 @@
       "  a  ",
       " aaa ",
       " aba ",
-      " aba ",
+      " abaa",
       "aabaa",
       "acbda",
       " aba ",
@@ -43,7 +43,7 @@
     [
       "     ",
       "  a  ",
-      " aa  ",
+      "  a  ",
       " aaa ",
       "aaaaa",
       "aaeaa",
@@ -55,8 +55,8 @@
       "     ",
       "     ",
       "  a  ",
-      " aaaa",
-      "aaaaa",
+      " aaa ",
+      " aaa ",
       "     ",
       "     "
     ]

@@ -4,8 +4,7 @@
   "ref": {
     "a": {"Properties":{"waterlogged":"false","persistent":"false","distance":"1"},"Name":"regions_unexplored:magnolia_leaves"},
     "b": {"Properties":{"axis":"y"},"Name":"regions_unexplored:magnolia_log"},
-    "c": {"Properties":{"axis":"z"},"Name":"regions_unexplored:magnolia_log"},
-    "d": {"Properties":{"axis":"x"},"Name":"regions_unexplored:magnolia_log"}
+    "c": {"Properties":{"axis":"x"},"Name":"regions_unexplored:magnolia_log"}
   },
   "shape": [
     [
@@ -66,24 +65,24 @@
       "           ",
       "     b     ",
       "     b     ",
-      "     bc    "
+      "     b     "
     ],
     [
       "           ",
       " aaaaa aa  ",
       "    aaaaaaa",
       "       aa  ",
-      "      d    ",
+      "      c    ",
       "           ",
       "           ",
-      "           "
+      "     c     "
     ],
     [
       "           ",
       "     aaaa  ",
       "    aaaaaaa",
       "     aaaa  ",
-      "      d    ",
+      "      c    ",
       "           ",
       "           ",
       "           "
@@ -92,7 +91,7 @@
       "           ",
       "     aaaaa ",
       "    aaaaaaa",
-      "     aadaa ",
+      "     aacaa ",
       "           ",
       "           ",
       "           ",

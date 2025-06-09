@@ -56,7 +56,7 @@ public class PackGenConfig {
 			.comment("Mods to exclude from pack generation")
 			.translation("bonsaigen.configuration.packgen.mod_blacklist")
 			.<String>defineListAllowEmpty(
-				"modBlacklist", List.of("regions_unexplored"), String::new, p -> p instanceof String s);
+				"modBlacklist", List.of(), String::new, p -> p instanceof String s);
 
 		MAXIMUM_MODEL_BLOCKS = builder
 			.comment("Maximum number of blocks during flood fill")

@@ -25,7 +25,7 @@
       "       "
     ],
     [
-      "       ",
+      "   b   ",
       " bbbbb ",
       "bcccccb",
       "b     b",
@@ -42,7 +42,7 @@
       "       "
     ],
     [
-      "   b   ",
+      "  bbb  ",
       "bbbabbb",
       "bccaccb",
       "   a   ",
@@ -59,7 +59,7 @@
       "   a   "
     ],
     [
-      "  bbb  ",
+      " bbbbb ",
       "bbaaabb",
       "bcaaacb",
       "  aaa  ",
@@ -72,11 +72,11 @@
       "  ba   ",
       "   a   ",
       "  ba   ",
-      "  aab  ",
+      "   ab  ",
       "  aaa  "
     ],
     [
-      "   b   ",
+      "  bbb  ",
       "bbbabbb",
       "bccaccb",
       "   a   ",
@@ -93,7 +93,7 @@
       "   a   "
     ],
     [
-      "       ",
+      "   b   ",
       " bbbbb ",
       "bcccccb",
       "b     b",
