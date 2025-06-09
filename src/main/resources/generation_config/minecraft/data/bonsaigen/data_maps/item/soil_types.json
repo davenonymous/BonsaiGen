@@ -10,7 +10,8 @@
 		"minecraft:mycelium": {
 			"id": "bonsaitrees4:mycelium",
 			"tags": [
-				"minecraft:mushroom_grow_block"
+				"minecraft:mushroom_grow_block",
+				"minecraft:nylium"
 			]
 		},
 		"minecraft:sand": {

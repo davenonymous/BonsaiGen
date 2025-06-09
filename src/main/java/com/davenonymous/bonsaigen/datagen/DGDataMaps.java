@@ -93,7 +93,7 @@ public class DGDataMaps extends DataMapProvider {
 				}
 			});
 
-			var soilTypeInfoMap = getSoilTypeGenerationInfo();
+			Map<Item, SoilTypeGenerationInfo> soilTypeInfoMap = getSoilTypeGenerationInfo();
 			if (!soilTypeInfoMap.isEmpty()) {
 				var fluidBuilder = builder(ModDataMaps.FLUID_SOIL);
 				fluidBuilder.conditions(new ModLoadedCondition(modId));
@@ -101,66 +101,58 @@ public class DGDataMaps extends DataMapProvider {
 				var soilBuilder = builder(ModDataMaps.BLOCK_SOIL);
 				soilBuilder.conditions(new ModLoadedCondition(modId));
 
+				Map<TagKey<Fluid>, List<ResourceLocation>> fluidTagSoils = new HashMap<>();
+				Map<TagKey<Block>, List<ResourceLocation>> blockTagSoils = new HashMap<>();
+				Map<ResourceLocation, List<ResourceLocation>> fluidSoils = new HashMap<>();
+				Map<ResourceLocation, List<ResourceLocation>> blockSoils = new HashMap<>();
+
 				for(Item item : soilTypeInfoMap.keySet()) {
 					SoilTypeGenerationInfo soilTypeInfo = soilTypeInfoMap.get(item);
 					ResourceLocation id = soilTypeInfo.id();
-					SoilInfo soilInfo = SoilInfo.of(id);
 
 					if(soilTypeInfo.isFluid()) {
 						if(soilTypeInfo.fluidTags().isPresent()) {
 							for(TagKey<Fluid> tag : soilTypeInfo.fluidTags().get()) {
-								fluidBuilder.add(tag, soilInfo, false);
+								fluidTagSoils.computeIfAbsent(tag, k -> new ArrayList<>()).add(id);
 							}
 						}
 
 						if(soilTypeInfo.fluids().isPresent()) {
 							for(ResourceLocation fluid : soilTypeInfo.fluids().get()) {
-								fluidBuilder.add(fluid, soilInfo, false);
+								fluidSoils.computeIfAbsent(fluid, k -> new ArrayList<>()).add(id);
 							}
 						}
 					} else {
 						if(soilTypeInfo.tags().isPresent()) {
 							for(TagKey<Block> tag : soilTypeInfo.tags().get()) {
-								soilBuilder.add(tag, soilInfo, false);
+								blockTagSoils.computeIfAbsent(tag, k -> new ArrayList<>()).add(id);
 							}
 						}
 
 						if(soilTypeInfo.blocks().isPresent()) {
 							for(ResourceLocation block : soilTypeInfo.blocks().get()) {
-								soilBuilder.add(block, soilInfo, false);
+								blockSoils.computeIfAbsent(block, k -> new ArrayList<>()).add(id);
 							}
 						}
-
 					}
 
+					if(soilTypeInfo.isFluid()) {
+						for(TagKey<Fluid> tag : fluidTagSoils.keySet()) {
+							fluidBuilder.add(tag, SoilInfo.of(fluidTagSoils.get(tag)), false);
+						}
+						for(ResourceLocation fluid : fluidSoils.keySet()) {
+							fluidBuilder.add(fluid, SoilInfo.of(fluidSoils.get(fluid)), false);
+						}
+					} else {
+						for(TagKey<Block> tag : blockTagSoils.keySet()) {
+							soilBuilder.add(tag, SoilInfo.of(blockTagSoils.get(tag)), false);
+						}
+						for(ResourceLocation block : blockSoils.keySet()) {
+							soilBuilder.add(block, SoilInfo.of(blockSoils.get(block)), false);
+						}
+					}
 				}
 			}
-			/*
-	   		if(this.modId.equals("minecraft")) {
-			   var soilBuilder = builder(ModDataMaps.BLOCK_SOIL);
-			   soilBuilder.add(BlockTags.DIRT, SoilInfo.of(_DIRT), false);
-			   soilBuilder.add(ModTags.DIRTS, SoilInfo.of(_DIRT), false);
-			   soilBuilder.add(BlockTags.BASE_STONE_NETHER, SoilInfo.of(_NETHER_STONE), false);
-			   soilBuilder.add(BlockTags.BASE_STONE_OVERWORLD, SoilInfo.of(_STONE), false);
-			   soilBuilder.add(BlockTags.MUSHROOM_GROW_BLOCK, SoilInfo.of(_MYCELIUM), false);
-			   soilBuilder.add(BlockTags.NYLIUM, SoilInfo.of(_NYLIUM), false);
-			   soilBuilder.add(BlockTags.SAND, SoilInfo.of(_SAND), false);
-			   soilBuilder.add(Tags.Blocks.END_STONES, SoilInfo.of(_END_STONE), false);
-
-				   var itemSoilBuilder = builder(ModDataMaps.ITEM_SOIL);
-			   itemSoilBuilder.add(
-						   Items.ENDER_EYE.builtInRegistryHolder(),
-						   SoilInfoWithTexture.of(
-									   _END_STONE, 1,
-									   ResourceLocation.withDefaultNamespace("block/end_portal_frame_top")
-								   ), false
-					   );
-
-				   var fluidSoilBuilder = builder(ModDataMaps.FLUID_SOIL);
-			   fluidSoilBuilder.add(FluidTags.WATER, SoilInfo.of(_WATER), false);
-			   fluidSoilBuilder.add(FluidTags.LAVA, SoilInfo.of(_LAVA), false);
-			   }
-			   */
 		});
 	}
 
