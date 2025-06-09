@@ -23,6 +23,14 @@ jobs:
           server-id:
           settings-path: ${{ github.workspace }}
 
+      - name: Setup Perl
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: "5.40"
+
+      - name: Install Perl dependencies
+        run: cpanm -n Mojolicious
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 

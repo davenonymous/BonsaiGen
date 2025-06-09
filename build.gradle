@@ -137,10 +137,19 @@ tasks.register("copyGameTestServerResourcePacks", ProcessResources) {
     into "${gen_path}/resourcepacks"
 }
 
-// Run the gametestserver, then copy the generated data packs to the main resources.
-tasks.register("regeneratePacks", Task) {
+
+tasks.register("copyPacks", Task) {
     dependsOn("copyGameTestServerDataPacks")
     dependsOn("copyGameTestServerResourcePacks")
+}
+
+tasks.register("injectModLoadedConditions", Exec) {
+    dependsOn("copyPacks")
+    commandLine "perl", "src/main/perl/fix_registry_jsons.pl", "${gen_path}/datapacks"
+}
+
+tasks.register("regeneratePacks", Task) {
+    dependsOn("injectModLoadedConditions")
 }
 
 dependencies {
