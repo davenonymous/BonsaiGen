@@ -1,0 +1,17 @@
+{
+	"neoforge:conditions": [
+		{
+			"type": "neoforge:mod_loaded",
+			"modid": "regions_unexplored"
+		}
+	],
+	"replace": false,
+	"values": {
+		"regions_unexplored:blackwood_sapling": {
+			"seed": 6
+		},
+		"regions_unexplored:enchanted_birch_sapling": {
+			"seed": 8
+		}
+	}
+}

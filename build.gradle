@@ -160,7 +160,7 @@ dependencies {
 
     implementation(files("./libs/bonsaitrees4-4.0.2.jar"))
 
-    runtimeOnly(files("./libs/RegionsUnexploredForge-0.5.6.1+1.21-fixed_random.jar"))
+    runtimeOnly(files("./libs/regions_unexplored-neoforge-1.21.1-0.5.6.1-fixed_random.jar"))
 }
 
 java.nio.file.Path modConf = projectDir.toPath().resolve("mods.conf")
