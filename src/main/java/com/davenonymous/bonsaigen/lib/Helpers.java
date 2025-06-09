@@ -1,8 +1,10 @@
 package com.davenonymous.bonsaigen.lib;
 
+import com.davenonymous.bonsaigen.BonsaiGen;
 import com.davenonymous.bonsaigen.setup.data.ModelGenerationInfo;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.AzaleaBlock;
 import net.minecraft.world.level.block.FungusBlock;
@@ -50,6 +52,16 @@ public class Helpers {
 			).orElse(null);
 		}
 
+		if(tree == null) {
+			long seed = options.fixedSeed().orElse(1L);
+			tree = grower.getConfiguredFeature(RandomSource.create(seed), false);
+		}
+
+		if(tree == null) {
+			long seed = options.fixedSeed().orElse(1L);
+			tree = grower.getConfiguredMegaFeature(RandomSource.create(seed));
+		}
+
 		return tree;
 	}
 
@@ -92,9 +104,9 @@ public class Helpers {
 				return;
 			}
 
-			Optional<ResourceKey<ConfiguredFeature<?, ?>>> tree = firstNonEmpty(
-				grower.tree, grower.secondaryTree, grower.megaTree, grower.secondaryMegaTree, grower.flowers, grower.secondaryFlowers);
-			if(tree.isEmpty()) {
+			ResourceKey<ConfiguredFeature<?, ?>> feature = getTreeFeature(grower, ModelGenerationInfo.EMPTY());
+			if(feature == null) {
+				BonsaiGen.LOGGER.warn("TreeGrower {} does not have a configured feature, skipping sapling block: {}", grower, block.getDescriptionId());
 				return;
 			}
 
