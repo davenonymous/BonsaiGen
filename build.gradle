@@ -138,10 +138,16 @@ tasks.register("copyGameTestServerResourcePacks", ProcessResources) {
     into "${gen_path}/resourcepacks"
 }
 
-
 tasks.register("copyPacks", Task) {
     dependsOn("copyGameTestServerDataPacks")
     dependsOn("copyGameTestServerResourcePacks")
+}
+
+tasks.register("copyOverwritePacks", ProcessResources) {
+    dependsOn("copyPacks")
+
+    from "src/main/generation_overwrite"
+    into "${gen_path}/"
 }
 
 tasks.register("injectModLoadedConditions", Exec) {
@@ -150,6 +156,7 @@ tasks.register("injectModLoadedConditions", Exec) {
 }
 
 tasks.register("regeneratePacks", Task) {
+    dependsOn("copyOverwritePacks")
     dependsOn("injectModLoadedConditions")
 }
 
