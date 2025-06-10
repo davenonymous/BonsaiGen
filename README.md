@@ -20,8 +20,7 @@ but there are some mods that require manual intervention and require opening an 
 Bonsai Trees 4 GitHub repository.
 
 If we managed to set up everything correctly on GitHub it should be enough to create a pull
-request with the mod added to the `dependencies` list in the `build.gradle` file. The rest should
-be handled automatically.
+request with the mod added to the `mods.conf` file. The rest should be handled automatically.
 
 
 ### Example
@@ -32,39 +31,26 @@ You can find this information on the CurseForge page of the mod. [Where?](cursef
 **Step 1**: Fork the `1.21.1` branch of the [BonsaiGen repository](https://github.
 com/davenonymous/BonsaiGen)
 
-**Step 2**: Edit the `build.gradle` file and add the mod to the `dependencies` list
+**Step 2**: Edit the `mods.conf` file and add the mod to the end of the list
 
-```gradle
-dependencies {
-    ...
+```
+cobblemon                                687131       6125026      # 2025-01-25T23:48:46.807Z  | Cobblemon-neoforge-1.6.1+1.21.1.jar
+pagans-blessing                          952071       5889348      # 2024-11-09T22:33:33.213Z  | paganbless-0.2.5.jar
+modonomicon                              538392       6543721      # 2025-05-18T15:33:45.83Z   | modonomicon-1.21.1-neoforge-1.114.2.jar
+valhelsia-core                           416935       6296775      # 2025-03-12T17:29:00.17Z   | valhelsia_core-neoforge-1.21.1-1.1.5.jar
+smartbrainlib                            661293       6101242      # 2025-01-18T23:01:30.52Z   | SmartBrainLib-neoforge-1.21.1-1.16.7.jar
+kotlin-for-forge                         351264       6497906      # 2025-05-05T07:11:02.707Z  | kotlinforforge-5.8.0-all.jar
 
-    // Only used for the data and resource pack generation
-    runtimeOnly "curse.maven:biomes-o-plenty-220318:${biomesoplenty_fileid}"
-    runtimeOnly "curse.maven:regions-unexplored-659110:${regionsunexplored_fileid}"
-    ...
-    // Add your mod here, e.g. for twilight forest:
-    runtimeOnly "curse.maven:the-twilight-forest-227639:${twilightforest_fileid}"
-    ...
-}
+<mod-project-name>                       <mod-id>     <file-id>    # comment
 ```
 
-**Step 3**: Edit the `gradle.properties` file and add the file ID for the mod to the bottom of the file
+**Step 3**: Create a Pull Request with your changes. GitHub should automatically run a test server
+instance and generate the data and resource packs for the mod you added. You can check the changes
+after a few minutes in the Pull Request.
 
-```ini
-...
-curios_fileid=6076118
-titanium_fileid=5897690
-geckolib_fileid=6027599
-
-# Add the latest file id here, e.g. for twilight forest:
-twilightforest_fileid=6070226
-```
-
-**Step 4**: Make sure the tree generation action has been executed after your changes. Maybe you need to
-trigger the GitHub action manually. It should have created a new commit with the generated data and
-resource packs.
-
-**Step 5**: Create a pull request with your changes.
+**Step 4**: The Bonsai Trees 4 team will review your pull request and merge it if everything is
+correct. If there are any issues with the mod or the generated data packs, we will comment on
+the pull request and ask you to fix them.
 
 
 ## In-Game
