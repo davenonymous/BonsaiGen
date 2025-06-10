@@ -26,8 +26,7 @@ request with the mod added to the `mods.conf` file. The rest should be handled a
 ### Example
 
 **Step 0**: Get the project name, project id and file id of the mod you want to add.
-You can find this information on the CurseForge page of the mod. [Where?]
-(assets/curseforge_file_data.png)
+You can find this information on the CurseForge page of the mod. [Where?](assets/curseforge_file_data.png)
 
 **Step 1**: Fork the `1.21.1` branch of the [BonsaiGen repository](https://github.com/davenonymous/BonsaiGen)
 
