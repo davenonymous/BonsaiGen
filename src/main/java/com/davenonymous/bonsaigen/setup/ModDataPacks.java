@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
-@EventBusSubscriber(modid = BonsaiGen.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = BonsaiGen.MODID)
 public class ModDataPacks {
 	private static final PackSelectionConfig DATAPACK_SELECTION_CONFIG = new PackSelectionConfig(true, Pack.Position.BOTTOM, false);
 

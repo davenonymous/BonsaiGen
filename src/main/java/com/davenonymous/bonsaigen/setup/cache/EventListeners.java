@@ -6,7 +6,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.datamaps.DataMapsUpdatedEvent;
 
-@EventBusSubscriber(modid = BonsaiGen.MODID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = BonsaiGen.MODID)
 public class EventListeners {
 	@SubscribeEvent
 	public static void dataMapsUpdated(DataMapsUpdatedEvent event) {
