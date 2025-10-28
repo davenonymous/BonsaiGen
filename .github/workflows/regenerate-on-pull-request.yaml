@@ -40,7 +40,7 @@ jobs:
       - name: Store old generated files
         run: cp -a generated/ old_generated/
 
-      - name: Build with Gradle
+      - name: Regenerate Packs
         run: ./gradlew regeneratePacks
 
       - uses: int128/diff-action@v1

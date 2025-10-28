@@ -10,6 +10,14 @@ plugins {
 version = mod_version
 group = mod_group_id
 
+if (file('secrets.gradle').exists()) {
+    apply from: 'secrets.gradle'
+} else {
+    project.ext.ghUsername = System.getenv("USERNAME")
+    project.ext.ghToken = System.getenv("TOKEN")
+}
+
+
 repositories {
     mavenLocal()
 
@@ -235,7 +243,12 @@ publishing {
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/repo"
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/davenonymous/BonsaiGen")
+            credentials {
+                username = project.ext.ghUsername
+                password = project.ext.ghToken
+            }
         }
     }
 }
