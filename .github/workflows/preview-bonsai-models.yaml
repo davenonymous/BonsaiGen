@@ -1,0 +1,222 @@
+name: Bonsai Model Previews
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    paths:
+      - 'generated/resourcepacks/**/models/multiblock/**/*.json'
+  workflow_dispatch:
+    inputs:
+      models:
+        description: 'Path filter (grep -E) for models to render; empty = all'
+        required: false
+        default: ''
+
+env:
+  PREVIEW_BRANCH: model-previews
+  PR_MODEL_CAP: 40
+
+# A newer run for the same PR supersedes the older one; they would race for
+# the previews branch otherwise.
+concurrency:
+  group: bonsai-previews-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write        # push to the previews branch
+      pull-requests: write   # sticky comment
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine models to render
+        id: models
+        env:
+          # Never interpolate user input into shell source (script injection).
+          MODELS_FILTER: ${{ inputs.models }}
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git diff --name-only --diff-filter=ACMR \
+              "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" \
+              | grep -E 'models/multiblock/.*\.json$' > all-changed.txt || true
+            head -n "$PR_MODEL_CAP" all-changed.txt > changed-models.txt
+            TRUNCATED=$(( $(wc -l < all-changed.txt) - $(wc -l < changed-models.txt) ))
+          else
+            find generated/resourcepacks -path '*models/multiblock*' -name '*.json' \
+              | { [ -n "$MODELS_FILTER" ] && grep -E "$MODELS_FILTER" || cat; } \
+              > changed-models.txt
+            TRUNCATED=0
+          fi
+          echo "count=$(wc -l < changed-models.txt)" >> "$GITHUB_OUTPUT"
+          echo "truncated=$TRUNCATED" >> "$GITHUB_OUTPUT"
+          cat changed-models.txt
+
+      - name: Nothing to do
+        if: steps.models.outputs.count == '0'
+        run: echo "No multiblock model changes."
+
+      - name: Install build dependencies
+        if: steps.models.outputs.count != '0'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            cmake ninja-build libsdl2-dev libwebp-dev libgif-dev \
+            libegl1-mesa-dev libgl1-mesa-dev
+
+      - name: Set up JDK 21
+        if: steps.models.outputs.count != '0'
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        if: steps.models.outputs.count != '0'
+        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+        with:
+          cache-read-only: true
+
+      - name: Resolve mod jars
+        if: steps.models.outputs.count != '0'
+        run: |
+          set -o pipefail
+          ./gradlew -q printModJars | grep '^--assets' > mod-jars.txt
+          JAR_COUNT=$(wc -l < mod-jars.txt)
+          echo "resolved $JAR_COUNT mod jars"
+          if [ "$JAR_COUNT" -lt 40 ]; then
+            echo "::warning::only $JAR_COUNT mod jars resolved - previews may show fallback textures"
+          fi
+
+      - name: Cache vanilla client jar
+        if: steps.models.outputs.count != '0'
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: mc-client-${{ hashFiles('gradle.properties') }}
+
+      - name: Fetch vanilla client jar
+        if: steps.models.outputs.count != '0'
+        run: src/main/cpp/create-tree-gif/scripts/fetch-vanilla-jar.sh
+
+      - name: Build create-tree-gif
+        if: steps.models.outputs.count != '0'
+        run: |
+          cmake -S src/main/cpp/create-tree-gif -B build-ctg -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-ctg -j
+
+      - name: GL sanity check
+        if: steps.models.outputs.count != '0'
+        run: ./build-ctg/create-tree-gif --gl-info
+
+      - name: Render previews
+        if: steps.models.outputs.count != '0'
+        run: |
+          # Arrays instead of word splitting: filenames are PR-controlled and
+          # must never expand into extra CLI options or globs.
+          ASSET_ARGS=()
+          while read -r flag jar_path; do
+            [ "$flag" = "--assets" ] && ASSET_ARGS+=("$flag" "$jar_path")
+          done < mod-jars.txt
+          mapfile -t MODELS < changed-models.txt
+          ./build-ctg/create-tree-gif \
+            "${ASSET_ARGS[@]}" \
+            --assets ".cache/minecraft_$(sed -n 's/^minecraft_version=//p' gradle.properties)_client.jar" \
+            --size 256 --formats gif \
+            --out-dir previews --report \
+            --manifest-json previews/manifest.json \
+            "${MODELS[@]}"
+
+      - name: Generate per-mod galleries
+        if: steps.models.outputs.count != '0'
+        run: src/main/cpp/create-tree-gif/scripts/generate-galleries.sh previews
+
+      - name: Upload previews artifact
+        if: steps.models.outputs.count != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: bonsai-previews
+          path: previews/
+          retention-days: 14
+
+      # Inline images in the PR comment need public raw URLs; workflow artifacts
+      # are zipped and auth-gated. Previews therefore live on an orphan branch:
+      # one folder per PR, and a browsable full gallery under gallery/ for
+      # workflow_dispatch runs. Fork PRs get the artifact only (no write token).
+      - name: Publish previews branch
+        id: publish
+        if: >
+          steps.models.outputs.count != '0' &&
+          (github.event_name == 'workflow_dispatch' ||
+           github.event.pull_request.head.repo.full_name == github.repository)
+        continue-on-error: true
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            TARGET_DIR="pr-${{ github.event.pull_request.number }}"
+          else
+            TARGET_DIR="gallery"
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Distinguish "branch does not exist" from a failed fetch: only the
+          # former may create a fresh orphan history.
+          if git ls-remote --exit-code --heads origin "$PREVIEW_BRANCH" >/dev/null; then
+            git fetch origin "$PREVIEW_BRANCH:refs/heads/$PREVIEW_BRANCH"
+          else
+            EMPTY_TREE=$(git hash-object -t tree /dev/null)
+            git branch "$PREVIEW_BRANCH" "$(git commit-tree "$EMPTY_TREE" -m 'init preview branch')"
+          fi
+          git worktree add .previews-worktree "$PREVIEW_BRANCH"
+          DEST=".previews-worktree/$TARGET_DIR"
+          rm -rf "$DEST"
+          mkdir -p "$DEST"
+          cp -r previews/. "$DEST/"
+          cd .previews-worktree
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no preview changes to publish"
+            exit 0
+          fi
+          git commit -m "Previews: $TARGET_DIR (${{ github.sha }})"
+          # Retry once in case a concurrent run pushed first.
+          git push origin "$PREVIEW_BRANCH" || { git pull --rebase origin "$PREVIEW_BRANCH" && git push origin "$PREVIEW_BRANCH"; }
+
+      - name: Compose PR comment
+        if: github.event_name == 'pull_request' && steps.publish.outcome == 'success'
+        run: |
+          BASE_URL="https://raw.githubusercontent.com/${{ github.repository }}/$PREVIEW_BRANCH/pr-${{ github.event.pull_request.number }}"
+          TREE_URL="https://github.com/${{ github.repository }}/tree/$PREVIEW_BRANCH/pr-${{ github.event.pull_request.number }}"
+          {
+            echo "## Bonsai model previews"
+            echo ""
+            echo "Rendered from \`${{ github.event.pull_request.head.sha }}\` - [browse as gallery]($TREE_URL)."
+            if [ "${{ steps.models.outputs.truncated }}" != "0" ]; then
+              echo ""
+              echo "> Note: ${{ steps.models.outputs.truncated }} additional changed model(s) were not rendered (cap: $PR_MODEL_CAP)."
+            fi
+            echo ""
+            jq -r --arg base "$BASE_URL" '
+              .models[] |
+              "<details open><summary><b>\(.name)</b></summary>\n\n" +
+              "<img src=\"\($base)/\(.name).gif\" width=\"256\" alt=\"\(.name)\">\n\n</details>\n"
+            ' previews/manifest.json
+            UNRESOLVED=$(jq -r '.unresolved | length' previews/manifest.json)
+            if [ "$UNRESOLVED" != "0" ]; then
+              echo ""
+              echo "> :warning: $UNRESOLVED block state(s) rendered with fallback textures:"
+              echo ""
+              jq -r '.unresolved[] | "> - `\(.)`"' previews/manifest.json
+            fi
+          } > comment.md
+
+      - name: Post sticky comment
+        if: github.event_name == 'pull_request' && steps.publish.outcome == 'success'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: bonsai-model-previews
+          path: comment.md

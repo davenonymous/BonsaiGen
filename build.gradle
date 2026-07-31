@@ -207,6 +207,22 @@ try {
     println("Error reading mods.conf: ${e}")
 }
 
+// Prints "--assets <jar>" lines for src/main/cpp/create-tree-gif. Resolving the
+// runtime classpath also forces the mod jars to download on a cold CI cache.
+tasks.register("printModJars") {
+    group = "bonsaigen"
+    description = "Prints --assets arguments (mod jars) for src/main/cpp/create-tree-gif; classpath order defines asset precedence"
+    notCompatibleWithConfigurationCache("prints resolved runtime classpath")
+    doLast {
+        java.nio.file.Path libsDir = projectDir.toPath().resolve("libs")
+        configurations.runtimeClasspath.files.findAll { jar ->
+            jar.path.contains("curse.maven") || jar.toPath().startsWith(libsDir)
+        }.each { jar ->
+            println("--assets ${jar}")
+        }
+    }
+}
+
 
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.

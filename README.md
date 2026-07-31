@@ -52,6 +52,17 @@ correct. If there are any issues with the mod or the generated data packs, we wi
 the pull request and ask you to fix them.
 
 
+### Model Previews
+
+Pull requests that change multiblock tree models automatically get a sticky comment with
+animated 360-degree previews of the changed trees (rendered by
+`src/main/cpp/create-tree-gif`, see its [README](src/main/cpp/create-tree-gif/README.md)).
+The images are published to the `model-previews` branch, where every mod folder contains a
+browsable `README.md` gallery of its trees (a manual run of the workflow publishes the full
+gallery for all mods under `gallery/`). For pull requests from forks the images are only
+available as a downloadable workflow artifact.
+
+
 ## In-Game
 
 If you don't want to create a pull request or the mod you want to add is not available via Maven you
