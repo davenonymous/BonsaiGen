@@ -1,0 +1,97 @@
+{
+  "loader": "bonsaitrees4:multiblockmodel",
+  "version": 4,
+  "ref": {
+    "a": {"Properties":{"waterlogged":"false","persistent":"false","distance":"3"},"Name":"witchery:alder_leaves"},
+    "b": {"Properties":{"waterlogged":"false","persistent":"false","distance":"6"},"Name":"witchery:alder_leaves"},
+    "c": {"Properties":{"waterlogged":"false","persistent":"false","distance":"4"},"Name":"witchery:alder_leaves"},
+    "d": {"Properties":{"waterlogged":"false","persistent":"false","distance":"1"},"Name":"witchery:alder_leaves"},
+    "e": {"Properties":{"axis":"y"},"Name":"witchery:alder_log"},
+    "f": {"Properties":{"waterlogged":"false","persistent":"false","distance":"2"},"Name":"witchery:alder_leaves"},
+    "g": {"Properties":{"waterlogged":"false","persistent":"false","distance":"5"},"Name":"witchery:alder_leaves"},
+    "h": {"Properties":{"axis":"x"},"Name":"witchery:alder_log"},
+    "i": {"Properties":{"axis":"z"},"Name":"witchery:alder_log"}
+  },
+  "shape": [
+    [
+      "      ",
+      " ggb  ",
+      " ccc  ",
+      " cacg ",
+      "  acg ",
+      "  acg ",
+      "      ",
+      "      "
+    ],
+    [
+      "  c   ",
+      "gcacb ",
+      "cafag ",
+      "aadacg",
+      " afacg",
+      " afacc",
+      "   d  ",
+      "      "
+    ],
+    [
+      " cac  ",
+      "cafag ",
+      "afdfc ",
+      "fdedac",
+      " fefac",
+      " fefaa",
+      "  eid ",
+      "  e   "
+    ],
+    [
+      "  c   ",
+      "gcacb ",
+      "cafag ",
+      "aadacg",
+      " ffacg",
+      " afacc",
+      "  hd  ",
+      "      "
+    ],
+    [
+      "      ",
+      " ggb  ",
+      " cccgb",
+      " caccg",
+      " caaac",
+      "  adf ",
+      "   h  ",
+      "      "
+    ],
+    [
+      "      ",
+      "  gcg ",
+      " gcacg",
+      " cafac",
+      " afdfa",
+      "  dhd ",
+      "      ",
+      "      "
+    ],
+    [
+      "      ",
+      "   g  ",
+      " bgcgb",
+      " gcacg",
+      " cafac",
+      "   d  ",
+      "      ",
+      "      "
+    ],
+    [
+      "      ",
+      "      ",
+      "  bgb ",
+      "  gcg ",
+      "  cac ",
+      "      ",
+      "      ",
+      "      "
+    ]
+  ]
+}

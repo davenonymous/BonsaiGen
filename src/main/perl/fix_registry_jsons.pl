@@ -1,8 +1,9 @@
 #!/usr/bin/perl
 
-use v5.40;
+use v5.38;
 use strict;
 use warnings;
+use experimental 'try';
 
 use Mojo::File;
 use JSON::XS;

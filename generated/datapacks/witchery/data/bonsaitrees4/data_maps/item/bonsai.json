@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "witchery"
+    }
+  ],
+  "values": {
+    "witchery:alder_sapling": {
+      "model": "witchery:alder"
+    },
+    "witchery:hawthorn_sapling": {
+      "model": "witchery:hawthorn"
+    },
+    "witchery:rowan_sapling": {
+      "model": "witchery:rowan"
+    }
+  }
+}

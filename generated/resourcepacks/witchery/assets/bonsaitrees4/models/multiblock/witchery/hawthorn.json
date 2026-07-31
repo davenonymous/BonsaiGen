@@ -1,0 +1,64 @@
+{
+  "loader": "bonsaitrees4:multiblockmodel",
+  "version": 4,
+  "ref": {
+    "a": {"Properties":{"axis":"y"},"Name":"witchery:hawthorn_log"},
+    "b": {"Properties":{"waterlogged":"false","persistent":"false","distance":"4"},"Name":"witchery:hawthorn_leaves"},
+    "c": {"Properties":{"waterlogged":"false","persistent":"false","distance":"3"},"Name":"witchery:hawthorn_leaves"},
+    "d": {"Properties":{"waterlogged":"false","persistent":"false","distance":"1"},"Name":"witchery:hawthorn_leaves"},
+    "e": {"Properties":{"waterlogged":"false","persistent":"false","distance":"5"},"Name":"witchery:hawthorn_leaves"},
+    "f": {"Properties":{"waterlogged":"false","persistent":"false","distance":"2"},"Name":"witchery:hawthorn_leaves"}
+  },
+  "shape": [
+    [
+      "     ",
+      " ebe ",
+      " bcb ",
+      " cfc ",
+      "     ",
+      "     ",
+      "     ",
+      "     "
+    ],
+    [
+      "  b  ",
+      "ebcbe",
+      "bcfcb",
+      "cfdfc",
+      "  f  ",
+      "     ",
+      "     ",
+      "     "
+    ],
+    [
+      " bcb ",
+      "bcfcb",
+      "cfdfc",
+      "fdadf",
+      " faf ",
+      "  a  ",
+      "  a  ",
+      "  a  "
+    ],
+    [
+      "  b  ",
+      "ebcbe",
+      "bcfcb",
+      "cfdfc",
+      "  f  ",
+      "     ",
+      "     ",
+      "     "
+    ],
+    [
+      "     ",
+      " ebe ",
+      " bcb ",
+      " cfc ",
+      "     ",
+      "     ",
+      "     ",
+      "     "
+    ]
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "loader": "bonsaitrees4:multiblockmodel",
+  "version": 4,
+  "ref": {
+    "a": {"Properties":{"west":"false","up":"true","south":"false","north":"false","east":"false","down":"false"},"Name":"eternal_starlight:shining_mushroom_block"},
+    "b": {"Properties":{"west":"true","up":"false","south":"true","north":"true","east":"true","down":"false"},"Name":"eternal_starlight:shining_mushroom_stem"},
+    "c": {"Properties":{"west":"true","up":"true","south":"false","north":"true","east":"false","down":"false"},"Name":"eternal_starlight:shining_mushroom_block"},
+    "d": {"Properties":{"west":"true","up":"true","south":"false","north":"false","east":"true","down":"false"},"Name":"eternal_starlight:shining_mushroom_block"},
+    "e": {"Properties":{"west":"false","up":"true","south":"true","north":"true","east":"false","down":"false"},"Name":"eternal_starlight:shining_mushroom_block"},
+    "f": {"Properties":{"west":"false","up":"true","south":"false","north":"true","east":"true","down":"false"},"Name":"eternal_starlight:shining_mushroom_block"},
+    "g": {"Properties":{"west":"true","up":"true","south":"true","north":"false","east":"false","down":"false"},"Name":"eternal_starlight:shining_mushroom_block"},
+    "h": {"Properties":{"west":"false","up":"true","south":"true","north":"false","east":"true","down":"false"},"Name":"eternal_starlight:shining_mushroom_block"}
+  },
+  "shape": [
+    [
+      " fdddh ",
+      "       ",
+      "       ",
+      "       ",
+      "       ",
+      "       "
+    ],
+    [
+      "fg   ch",
+      "  aaa  ",
+      "       ",
+      "       ",
+      "       ",
+      "       "
+    ],
+    [
+      "e     e",
+      " aaaaa ",
+      "       ",
+      "       ",
+      "       ",
+      "       "
+    ],
+    [
+      "e     e",
+      " aaaaa ",
+      "   b   ",
+      "   b   ",
+      "   b   ",
+      "   b   "
+    ],
+    [
+      "e     e",
+      " aaaaa ",
+      "       ",
+      "       ",
+      "       ",
+      "       "
+    ],
+    [
+      "ch   fg",
+      "  aaa  ",
+      "       ",
+      "       ",
+      "       ",
+      "       "
+    ],
+    [
+      " cdddg ",
+      "       ",
+      "       ",
+      "       ",
+      "       ",
+      "       "
+    ]
+  ]
+}

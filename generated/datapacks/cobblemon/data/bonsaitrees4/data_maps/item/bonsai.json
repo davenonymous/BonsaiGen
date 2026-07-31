@@ -21,6 +21,9 @@
     "cobblemon:red_apricorn_seed": {
       "model": "cobblemon:red_apricorn_tree"
     },
+    "cobblemon:saccharine_sapling": {
+      "model": "cobblemon:saccharine_tree"
+    },
     "cobblemon:white_apricorn_seed": {
       "model": "cobblemon:white_apricorn_tree"
     },

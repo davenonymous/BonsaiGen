@@ -1,0 +1,49 @@
+{
+   "neoforge:conditions" : [
+      {
+         "modid" : "witchery",
+         "type" : "neoforge:mod_loaded"
+      }
+   ],
+   "pools" : [
+      {
+         "bonus_rolls" : 1.5,
+         "conditions" : [
+            {
+               "chance" : 0.5,
+               "condition" : "minecraft:random_chance"
+            }
+         ],
+         "entries" : [
+            {
+               "type" : "minecraft:loot_table",
+               "value" : "witchery:blocks/rowan_log"
+            }
+         ],
+         "name" : "log",
+         "rolls" : 3
+      },
+      {
+         "bonus_rolls" : 1,
+         "conditions" : [
+            {
+               "chance" : 0.5,
+               "condition" : "minecraft:random_chance"
+            }
+         ],
+         "entries" : [
+            {
+               "type" : "minecraft:loot_table",
+               "value" : "witchery:blocks/rowan_leaves"
+            },
+            {
+               "type" : "minecraft:loot_table",
+               "value" : "witchery:blocks/rowan_berry_leaves"
+            }
+         ],
+         "name" : "leaves",
+         "rolls" : 2
+      }
+   ],
+   "random_sequence" : "bonsaitrees4:bonsai/witchery/rowan"
+}

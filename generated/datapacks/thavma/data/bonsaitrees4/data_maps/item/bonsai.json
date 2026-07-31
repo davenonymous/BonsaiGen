@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "thavma"
+    }
+  ],
+  "values": {
+    "thavma:greatwood_sapling": {
+      "model": "thavma:tree_greatwood"
+    },
+    "thavma:silverwood_sapling": {
+      "model": "thavma:tree_silverwood"
+    }
+  }
+}
